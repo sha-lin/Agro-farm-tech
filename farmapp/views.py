@@ -18,9 +18,9 @@ from .models import Product, ProductRequest
 from django.contrib.auth.decorators import login_required
 
 @login_required
-class PostDetailView(DetailView):
-    model=Post
-    template_name='tfarmapp/dashboard.html'
+# class PostDetailView(DetailView):
+#     model=Post
+#     template_name='tfarmapp/dashboard.html'
 
 def dashboard(request):
     products = Product.objects.filter(user=request.user)
