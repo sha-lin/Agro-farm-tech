@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Requests</title>
+</head>
+<body>
+    <h1>Product Requests for {{ product.name }}</h1>
+
+    <ul>
+        {% for request in requests %}
+            <li>
+                Buyer: {{ request.buyer.username }}<br>
+                Quantity: {{ request.quantity }}<br>
+            </li>
+        {% empty %}
+            <p>No requests for this product yet.</p>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'dashboard' %}">Back to Dashboard</a>
+</body>
+</html>

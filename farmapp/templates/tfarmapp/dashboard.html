@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Farmer Dashboard</title>
+</head>
+<body>
+    <h1>Welcome, {{ user.username }}</h1>
+
+    <!-- Link to add a new product -->
+    <a href="{% url 'add_product' %}">Add Product</a>
+
+    <!-- List of your products -->
+    <h2>Your Products</h2>
+    <ul>
+        
+
+        {% for product in products %}
+            <li>
+                <strong>{{ product.name }}</strong><br>
+                Description: {{ product.description }}<br>
+                Price: ${{ product.price }}<br>
+                <a href="{% url 'view_requests' product.id %}">View Requests</a>
+            </li>
+        {% empty %}
+            <p>You haven't added any products yet.</p>
+        {% endfor %}
+    </ul>
+
+    <!-- List of product requests -->
+    <h2>Product Requests</h2>
+    <ul>
+        {% for request in requests %}
+            <li>
+                Product: {{ request.product.name }}<br>
+                Buyer: {{ request.buyer.username }}<br>
+                Quantity: {{ request.quantity }}<br>
+            </li>
+        {% empty %}
+            <p>No requests for your products yet.</p>
+        {% endfor %}
+    </ul>
+</body>
+</html>
