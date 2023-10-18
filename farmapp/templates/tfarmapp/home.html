@@ -11,32 +11,10 @@
     </div>
   </div>
 
-  <div class="carousel">
-    <div class="card-container">
-      <div class="card">Card 1</div>
-      <div class="card">Card 2</div>
-      <div class="card">Card 3</div>
-      <div class="card">Card 4</div>
-      <div class="card">Card 5</div>
-    </div>
-  </div>
 
   <div class="container pb-5 mb-5">
     
     <h2 class="text-center pt-5 mb-5">AGRI-PRODUCTS</h2>
-    <div class="row">
-      {% for business in business  %}
-          <div class="col-md-4 p-3">
-            <div class="card">
-              <img src="{{business.business_image.url}}" alt="" class="img-fluid">
-              <div class="card-body">
-                <a href="{% url 'business-detail' business.pk %}"><p class="card-text">{{business.name}}</p></a>
-                <p class="card-text">{{business.location}}</p>
-              </div>
-            </div>
-          </div>
-      {% endfor %}
-    </div>
     <div class="div">
       <h3 class="pt-5 mt-5 text-center">Our Agri-products</h3>
       <p>Sneak-peak for our products </p>
@@ -54,7 +32,7 @@
       </div>
       <div class="col-md-4">
         <div class="card">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-0SGlgV5uevjOJ8P_rO26GasCyD8io-Keaw&usqp=CAU" class="img-fluid card-img-top" alt="Coffee" style="height: 200px;">
+          <img src="https://t4.ftcdn.net/jpg/00/74/95/51/360_F_74955106_Xqheiiztap0v8fmklfgqwHiK9Nw8ApxX.jpg" alt="Coffee" style="height: 200px;">
           <div class="card-body">
             <p>Coffee</p>
             <!-- <p class="card-text">919</p> -->

@@ -17,22 +17,22 @@ from django.shortcuts import render, redirect
 from .models import Product, ProductRequest
 from django.contrib.auth.decorators import login_required
 
-@login_required
-# class PostDetailView(DetailView):
-#     model=Post
-#     template_name='tfarmapp/dashboard.html'
 
+# from django.contrib.auth.decorators import login_required
+
+@login_required
+def dashboard_view(request):
+    # Your dashboard logic here
+    return render(request, 'tfarmapp/dashboard.html')
+
+@login_required
 def dashboard(request):
     products = Product.objects.filter(user=request.user)
     requests = ProductRequest.objects.filter(product__user=request.user)
     return render(request,'tfarmapp/dashboard.html',)
-    return render(request, 'dashboard.html', {'products': products, 'requests': requests})
+    # return render(request, 'dashboard.html', {'products': products, 'requests': requests})
 
 @login_required
-# class PostDetailView(DetailView):
-#     model=Post
-#     template_name='tfarmapp/add_product.html'
-
 def add_product(request):
     if request.method == 'POST':
      form = ProductForm(request.POST)
@@ -49,7 +49,7 @@ def add_product(request):
     else:
         form = ProductForm()
 
-    return render(request, 'tfarmapp/add_product.html', {'form': form})
+    return render(request, 'tfarmapp/dashboard.html', {'form': form})
         # Handle form submission and create a new product
         # You'll need to create a form for adding products
 
