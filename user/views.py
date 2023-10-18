@@ -5,17 +5,24 @@ from django.contrib.auth.decorators import login_required
 from .models import Profile
 # Create your views here.
 
+from django.shortcuts import render, redirect
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
+
 def register(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data['username']
+            user = form.save()
+            login(request, user)
             messages.success(request,f'Your Account has been created!, You are now able to login')
             return redirect('login')
+        else:
+            return render(request, 'register.html', {'form': form})
     else:
         form = UserRegistrationForm()
-        return render(request,'register.html',{'form':form})
+        return render(request, 'register.html', {'form': form})
+        
 @login_required
 def profile(request):
     try:
