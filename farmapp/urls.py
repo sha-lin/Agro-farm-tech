@@ -15,9 +15,16 @@ from farmapp.views import (BusinessDeleteView,
 
 urlpatterns=[
     path('',BusinessListView.as_view(),name="home"),
-    path('dashboard/', views.dashboard, name='dashboard'),
-    path('add_product/', views.add_product, name='add_product'),
-    path('view_requests/', views.view_requests, name='view_requests'),
+    # path('dashboard/', views.dashboard, name='dashboard'),
+    # path('dashboard/', views.farmer_dashboard, name='dashboard'),
+    # path('add_product/', views.add_product, name='add_product'),
+
+    # path('dashboard/', views.dashboard, name='dashboard'),
+    # path('dashboard', views.dashboard, name='dashboard'),
+    # path('post_product/', views.post_product, name='post_product'),
+    # path('add_product_code/', views.add_product_code, name='add_product_code'),
+    # path('add_product/', views.add_product, name='add_product'),
+    
     # path('dashboard/', views.dashboard, name='dashboard'),
     path('business/<int:pk>/',BusinessDetailView.as_view(),name='business-detail'),
     path('business/new/',BusinessCreateView.as_view(),name='business-create'),

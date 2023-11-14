@@ -7,58 +7,17 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 from .models import Post,Business
-from .form import BusinessForms,PostForms
-from .form import ProductForm 
 
 
 
 # farmer_app/views.py
 from django.shortcuts import render, redirect
-from .models import Product, ProductRequest
-from django.contrib.auth.decorators import login_required
 
 
-# from django.contrib.auth.decorators import login_required
 
-@login_required
-def dashboard_view(request):
-    # Your dashboard logic here
-    return render(request, 'tfarmapp/dashboard.html')
 
-@login_required
-def dashboard(request):
-    products = Product.objects.filter(user=request.user)
-    requests = ProductRequest.objects.filter(product__user=request.user)
-    return render(request,'tfarmapp/dashboard.html',)
-    # return render(request, 'dashboard.html', {'products': products, 'requests': requests})
 
-@login_required
-def add_product(request):
-    if request.method == 'POST':
-     form = ProductForm(request.POST)
-     if form.is_valid():
-            # Create a new product object but don't save it to the database yet
-            new_product = form.save(commit=False)
-            
-            # Assign the user to the product (assuming the user is logged in)
-            new_product.user = request.user
-            
-            # Save the product to the database
-            new_product.save()
-            return redirect('dashboard')
-    else:
-        form = ProductForm()
 
-    return render(request, 'tfarmapp/dashboard.html', {'form': form})
-        # Handle form submission and create a new product
-        # You'll need to create a form for adding products
-
-    return render(request, 'tfarmapp/add_product.html',)
-
-@login_required
-def view_requests(request):
-    requests = ProductRequest.objects.filter(product__user=request.user)
-    return render(request, 'tfarmapp/view_requests.html', {'requests': requests})
 
 
 # Create your views here.
@@ -144,7 +103,7 @@ class PostDetailView(DetailView):
 
 class PostUpdateView(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
     model=Post
-    # template_name='tfarmapp/post_detail.html'
+    template_name='tfarmapp/post_detail.html'
     fields = ['post']
     
 
@@ -173,3 +132,9 @@ def search_request(request):
     else:
         message="You haven't searched for any item"
         return render(request,'tfarmapp/search.html',{"message":message}) 
+    
+
+
+
+
+# 

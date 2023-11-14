@@ -1,22 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Product Requests</title>
-</head>
-<body>
-    <h1>Product Requests for {{ product.name }}</h1>
+{% extends 'base.html' %}
 
-    <ul>
-        {% for request in requests %}
-            <li>
-                Buyer: {{ request.buyer.username }}<br>
-                Quantity: {{ request.quantity }}<br>
-            </li>
-        {% empty %}
-            <p>No requests for this product yet.</p>
-        {% endfor %}
-    </ul>
-
-    <a href="{% url 'dashboard' %}">Back to Dashboard</a>
-</body>
-</html>
+{% block content %}
+  <h1>{{ product.name }} Requests</h1>
+  <ul>
+    {% for request in requests %}
+      <li>{{ request.buyer.username }} wants {{ request.quantity }}</li>
+    {% empty %}
+      <li>No requests yet.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -60,6 +60,12 @@ INSTALLED_APPS = [
     'bootstrap4',
     'crispy_forms',
     'rest_framework',
+    'django_forms_bootstrap',
+    'dashboard',
+    'widget_tweaks',
+    'braces',
+    'mathfilters',
+    # 'bootstrap4',
 ]
 
 TEMPLATES = [
@@ -151,6 +157,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
